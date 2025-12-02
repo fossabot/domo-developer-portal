@@ -50,7 +50,7 @@ Users can choose from a variety of actions to perform on components within their
 - **All Action Types**
 - **Manual Entry**
 
-##### JSON Editor
+#### JSON Editor
 
 Users can see and edit the schema of their form here.
 

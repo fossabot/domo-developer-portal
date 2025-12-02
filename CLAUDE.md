@@ -19,6 +19,7 @@ This is the Domo Developer Portal documentation repository. The portal is hosted
     - `DDX-Bricks/` - Domo Bricks (no-code) documentation
     - `Pro-Code-Editor/` - Pro-code editor tutorials
   - `Automate-Actions/` - Workflows and Code Engine documentation
+  - `Forms/` - Forms Documentation
   - `Connectors/` - Custom connector and data connection guides
   - `Data-Science/` - AI and data science resources
   - `Embedded-Analytics/` - Embedding Domo content guides

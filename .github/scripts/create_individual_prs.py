@@ -36,7 +36,7 @@ class PRCreator:
         pr_branch_prefix: str = "doc-bot",
         openai_model: str = "gpt-4o",
         max_iterations: str = "3",
-        completeness_threshold: str = "90"
+        completeness_threshold: str = "90",
     ):
         self.changed_files_list = changed_files_list
         self.temp_dir = temp_dir
@@ -53,14 +53,13 @@ class PRCreator:
         self.failed = 0
         self.skipped = 0
 
-    def run_command(self, cmd: List[str], capture_output: bool = True, check: bool = True) -> subprocess.CompletedProcess:
+    def run_command(
+        self, cmd: List[str], capture_output: bool = True, check: bool = True
+    ) -> subprocess.CompletedProcess:
         """Run a shell command"""
         try:
             result = subprocess.run(
-                cmd,
-                capture_output=capture_output,
-                text=True,
-                check=check
+                cmd, capture_output=capture_output, text=True, check=check
             )
             return result
         except subprocess.CalledProcessError as e:
@@ -68,24 +67,36 @@ class PRCreator:
             print(f"   Error: {e.stderr if e.stderr else e.stdout}")
             raise
 
-    def git_command(self, args: List[str], check: bool = True) -> subprocess.CompletedProcess:
+    def git_command(
+        self, args: List[str], check: bool = True
+    ) -> subprocess.CompletedProcess:
         """Run a git command"""
         return self.run_command(["git"] + args, check=check)
 
-    def gh_command(self, args: List[str], check: bool = True) -> subprocess.CompletedProcess:
+    def gh_command(
+        self, args: List[str], check: bool = True
+    ) -> subprocess.CompletedProcess:
         """Run a gh (GitHub CLI) command"""
         return self.run_command(["gh"] + args, check=check)
 
     def check_pr_exists(self, branch_name: str) -> Optional[int]:
         """Check if an open PR exists for the given branch"""
         try:
-            result = self.gh_command([
-                "pr", "list",
-                "--state", "open",
-                "--head", branch_name,
-                "--json", "number",
-                "--jq", ".[0].number"
-            ], check=False)
+            result = self.gh_command(
+                [
+                    "pr",
+                    "list",
+                    "--state",
+                    "open",
+                    "--head",
+                    branch_name,
+                    "--json",
+                    "number",
+                    "--jq",
+                    ".[0].number",
+                ],
+                check=False,
+            )
 
             if result.returncode == 0 and result.stdout.strip():
                 return int(result.stdout.strip())
@@ -99,21 +110,38 @@ class PRCreator:
             # Fetch latest
             self.git_command(["fetch", "origin"], check=False)
 
-            # Checkout base branch
+            # Checkout base branch first
             self.git_command(["checkout", self.base_branch], check=False)
 
-            # Check if branch exists remotely
-            result = self.git_command([
-                "ls-remote", "--heads", "origin", branch_name
-            ], check=False)
+            # Check if branch exists locally
+            local_branches = self.git_command(
+                ["branch", "--list", branch_name], check=False
+            )
+            branch_exists_locally = branch_name in local_branches.stdout
 
-            if result.stdout.strip():
+            # Check if branch exists remotely
+            result = self.git_command(
+                ["ls-remote", "--heads", "origin", branch_name], check=False
+            )
+            branch_exists_remotely = bool(result.stdout.strip())
+
+            if branch_exists_remotely:
                 # Branch exists remotely
-                print(f"Checking out existing branch: {branch_name}")
-                self.git_command(["checkout", branch_name], check=False)
-                self.git_command(["pull", "origin", branch_name], check=False)
+                print(f"Branch exists remotely: {branch_name}")
+
+                if branch_exists_locally:
+                    # Delete local branch to avoid conflicts
+                    print(f"Deleting local branch to refresh from remote...")
+                    self.git_command(["branch", "-D", branch_name], check=False)
+
+                # Checkout from remote with tracking
+                print(f"Checking out from remote with tracking...")
+                self.git_command(
+                    ["checkout", "-b", branch_name, f"origin/{branch_name}"]
+                )
+
             else:
-                # Create new branch
+                # Create new branch from base
                 print(f"Creating new branch: {branch_name}")
                 self.git_command(["checkout", "-b", branch_name])
 
@@ -127,18 +155,25 @@ class PRCreator:
         # Create temp file list with single file
         temp_file_list = "temp_single_file.txt"
         try:
-            with open(temp_file_list, 'w') as f:
-                f.write(yaml_file + '\n')
+            with open(temp_file_list, "w") as f:
+                f.write(yaml_file + "\n")
 
             print(f"🔄 Syncing file to destination with mapping...")
-            result = self.run_command([
-                "python",
-                self.sync_script,
-                "--generated", self.temp_dir,
-                "--destination", self.dest_dir,
-                "--mapping", self.mapping_file,
-                "--changed-list", temp_file_list
-            ], check=False)
+            result = self.run_command(
+                [
+                    "python",
+                    self.sync_script,
+                    "--generated",
+                    self.temp_dir,
+                    "--destination",
+                    self.dest_dir,
+                    "--mapping",
+                    self.mapping_file,
+                    "--changed-list",
+                    temp_file_list,
+                ],
+                check=False,
+            )
 
             os.remove(temp_file_list)
 
@@ -164,30 +199,40 @@ class PRCreator:
             self.git_command(["add", self.mapping_file], check=False)
 
             # Check if there are changes to commit
-            result = self.git_command([
-                "diff", "--cached", "--name-only"
-            ], check=False)
+            result = self.git_command(["diff", "--cached", "--name-only"], check=False)
 
             if not result.stdout.strip():
                 print(f"ℹ️ No changes to commit for {file_name}")
                 return None
 
             # Get the mapped file name for commit message
-            mapped_files = [line for line in result.stdout.strip().split('\n') if line.endswith('.md')]
+            mapped_files = [
+                line
+                for line in result.stdout.strip().split("\n")
+                if line.endswith(".md")
+            ]
             mapped_file = mapped_files[0] if mapped_files else "unknown"
 
             # Configure git
             self.git_command(["config", "user.name", "github-actions[bot]"])
-            self.git_command(["config", "user.email", "github-actions[bot]@users.noreply.github.com"])
+            self.git_command(
+                ["config", "user.email", "github-actions[bot]@users.noreply.github.com"]
+            )
 
             # Commit
-            self.git_command([
-                "commit",
-                "-m", f"📚 Update documentation for {file_name}",
-                "-m", "Auto-generated from YAML specification",
-                "-m", f"Source: {yaml_file}",
-                "-m", f"Destination: {mapped_file}"
-            ])
+            self.git_command(
+                [
+                    "commit",
+                    "-m",
+                    f"📚 Update documentation for {file_name}",
+                    "-m",
+                    "Auto-generated from YAML specification",
+                    "-m",
+                    f"Source: {yaml_file}",
+                    "-m",
+                    f"Destination: {mapped_file}",
+                ]
+            )
 
             return mapped_file
         except subprocess.CalledProcessError as e:
@@ -203,7 +248,9 @@ class PRCreator:
             print(f"❌ Push failed: {e}")
             return False
 
-    def create_pr(self, branch_name: str, file_name: str, yaml_file: str, mapped_file: str) -> Optional[str]:
+    def create_pr(
+        self, branch_name: str, file_name: str, yaml_file: str, mapped_file: str
+    ) -> Optional[str]:
         """Create a pull request"""
         try:
             pr_body = f"""## 🤖 Auto-Generated Documentation Update
@@ -226,18 +273,28 @@ This PR contains automatically generated documentation for a single API spec.
 
 Please review the generated documentation before merging."""
 
-            result = self.gh_command([
-                "pr", "create",
-                "--title", f"📚 Update documentation for {file_name}",
-                "--body", pr_body,
-                "--head", branch_name,
-                "--base", self.base_branch
-            ], check=False)
+            result = self.gh_command(
+                [
+                    "pr",
+                    "create",
+                    "--title",
+                    f"📚 Update documentation for {file_name}",
+                    "--body",
+                    pr_body,
+                    "--head",
+                    branch_name,
+                    "--base",
+                    self.base_branch,
+                ],
+                check=False,
+            )
 
             if result.returncode == 0 and result.stdout.strip().startswith("https://"):
                 return result.stdout.strip()
             else:
-                print(f"⚠️ PR creation failed: {result.stderr if result.stderr else result.stdout}")
+                print(
+                    f"⚠️ PR creation failed: {result.stderr if result.stderr else result.stdout}"
+                )
                 return None
         except subprocess.CalledProcessError as e:
             print(f"⚠️ PR creation failed: {e}")
@@ -319,17 +376,12 @@ Please review the generated documentation before merging."""
             print(f"❌ Changed files list not found: {self.changed_files_list}")
             sys.exit(1)
 
-        with open(self.changed_files_list, 'r') as f:
+        with open(self.changed_files_list, "r") as f:
             files = [line.strip() for line in f if line.strip()]
 
         if not files:
             print("⚠️ No files to process")
-            return {
-                "processed": 0,
-                "failed": 0,
-                "skipped": 0,
-                "total": 0
-            }
+            return {"processed": 0, "failed": 0, "skipped": 0, "total": 0}
 
         for yaml_file in files:
             self.process_file(yaml_file)
@@ -345,63 +397,53 @@ Please review the generated documentation before merging."""
             "processed": self.processed,
             "failed": self.failed,
             "skipped": self.skipped,
-            "total": len(files)
+            "total": len(files),
         }
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Create individual PRs for changed YAML files with file mapping'
+        description="Create individual PRs for changed YAML files with file mapping"
     )
     parser.add_argument(
-        '--changed-list',
+        "--changed-list",
         required=True,
-        help='File containing list of changed YAML files'
+        help="File containing list of changed YAML files",
     )
     parser.add_argument(
-        '--temp-dir',
-        required=True,
-        help='Directory with generated markdown files'
+        "--temp-dir", required=True, help="Directory with generated markdown files"
     )
     parser.add_argument(
-        '--dest-dir',
-        required=True,
-        help='Destination directory for markdown files'
+        "--dest-dir", required=True, help="Destination directory for markdown files"
     )
     parser.add_argument(
-        '--mapping-file',
-        required=True,
-        help='Path to mapping configuration file'
+        "--mapping-file", required=True, help="Path to mapping configuration file"
     )
     parser.add_argument(
-        '--sync-script',
-        required=True,
-        help='Path to sync_to_destination.py script'
+        "--sync-script", required=True, help="Path to sync_to_destination.py script"
     )
     parser.add_argument(
-        '--base-branch',
-        default='master',
-        help='Base branch to create PRs from (default: master)'
+        "--base-branch",
+        default="master",
+        help="Base branch to create PRs from (default: master)",
     )
     parser.add_argument(
-        '--pr-branch-prefix',
-        default='doc-bot',
-        help='Branch name prefix for PRs (default: doc-bot)'
+        "--pr-branch-prefix",
+        default="doc-bot",
+        help="Branch name prefix for PRs (default: doc-bot)",
     )
     parser.add_argument(
-        '--openai-model',
-        default='gpt-4o',
-        help='OpenAI model used for generation (for PR description)'
+        "--openai-model",
+        default="gpt-4o",
+        help="OpenAI model used for generation (for PR description)",
     )
     parser.add_argument(
-        '--max-iterations',
-        default='3',
-        help='Max iterations used (for PR description)'
+        "--max-iterations", default="3", help="Max iterations used (for PR description)"
     )
     parser.add_argument(
-        '--completeness-threshold',
-        default='90',
-        help='Completeness threshold used (for PR description)'
+        "--completeness-threshold",
+        default="90",
+        help="Completeness threshold used (for PR description)",
     )
 
     args = parser.parse_args()
@@ -416,13 +458,13 @@ def main():
         pr_branch_prefix=args.pr_branch_prefix,
         openai_model=args.openai_model,
         max_iterations=args.max_iterations,
-        completeness_threshold=args.completeness_threshold
+        completeness_threshold=args.completeness_threshold,
     )
 
     results = creator.process_all_files()
 
     # Exit with error if any failed
-    if results['failed'] > 0:
+    if results["failed"] > 0:
         sys.exit(1)
 
 

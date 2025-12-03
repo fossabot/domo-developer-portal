@@ -110,6 +110,10 @@ class PRCreator:
             # Fetch latest
             self.git_command(["fetch", "origin"], check=False)
 
+            # Clean up any untracked files in temp directory that might conflict
+            print(f"Cleaning temp directory to avoid conflicts...")
+            self.git_command(["clean", "-fd", self.temp_dir], check=False)
+
             # Checkout base branch first
             self.git_command(["checkout", self.base_branch], check=False)
 

@@ -9,13 +9,13 @@ name: Sync API Documentation from Source Repo
 on:
   # Primary trigger - runs automatically every 6 hours
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: "0 */6 * * *" # Every 6 hours
 
   # Manual trigger - use this for on-demand sync
   workflow_dispatch:
     inputs:
       force_regenerate:
-        description: 'Force regenerate all docs (ignore change detection)'
+        description: "Force regenerate all docs (ignore change detection)"
         required: false
         type: boolean
         default: false
@@ -39,7 +39,9 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           owner: domoinc
-          repositories: internal-domo-apis
+          repositories: |
+            internal-domo-apis
+            domo-developer-portal
 
       - name: Checkout Destination Repo
         uses: actions/checkout@v4
@@ -57,7 +59,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install Dependencies
         run: |
@@ -107,22 +109,22 @@ jobs:
           openai_api_key: ${{ secrets.OPENAI_API_KEY }}
 
           # Paths
-          yaml_input_path: './source-repo/api-docs/public'
-          output_path: './temp-docs'
-          template_path: 'default'  # or path to custom template
+          yaml_input_path: "./source-repo/api-docs/public"
+          output_path: "./temp-docs"
+          template_path: "default" # or path to custom template
 
           # AI Configuration
-          openai_model: 'gpt-4o'  # or 'gpt-4', 'gpt-3.5-turbo'
-          max_iterations: '3'  # Max refinement iterations (higher = better quality, more cost)
-          completeness_threshold: '90'  # Quality score threshold (0-100)
-          timeout_minutes: '30'  # Max processing time
+          openai_model: "gpt-4o" # or 'gpt-4', 'gpt-3.5-turbo'
+          max_iterations: "3" # Max refinement iterations (higher = better quality, more cost)
+          completeness_threshold: "90" # Quality score threshold (0-100)
+          timeout_minutes: "30" # Max processing time
 
           # Change Detection
           changed_files: ${{ steps.read-changes.outputs.changed_files }}
-          process_changed_only: 'false'  # We already filtered via detect_yaml_changes.py
+          process_changed_only: "false" # We already filtered via detect_yaml_changes.py
 
           # PR creation disabled - we handle it below with sync
-          create_pull_request: 'false'
+          create_pull_request: "false"
 
       # Create individual PRs with proper file mapping
       - name: Create Individual PRs with File Sync
@@ -140,7 +142,8 @@ jobs:
             --pr-branch-prefix doc-bot \
             --openai-model gpt-4o \
             --max-iterations 3 \
-            --completeness-threshold 90
+            --completeness-threshold 90 \
+            --repo DomoApps/domo-developer-portal
 
       - name: Summary
         if: always()

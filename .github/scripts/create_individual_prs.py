@@ -110,12 +110,9 @@ class PRCreator:
             # Fetch latest
             self.git_command(["fetch", "origin"], check=False)
 
-            # Clean up any untracked files in temp directory that might conflict
-            print(f"Cleaning temp directory to avoid conflicts...")
-            self.git_command(["clean", "-fd", self.temp_dir], check=False)
-
-            # Checkout base branch first
-            self.git_command(["checkout", self.base_branch], check=False)
+            # Checkout base branch first (force to overwrite any conflicts)
+            print(f"Returning to base branch...")
+            self.git_command(["checkout", "-f", self.base_branch], check=False)
 
             # Check if branch exists locally
             local_branches = self.git_command(
@@ -138,10 +135,10 @@ class PRCreator:
                     print(f"Deleting local branch to refresh from remote...")
                     self.git_command(["branch", "-D", branch_name], check=False)
 
-                # Checkout from remote with tracking
+                # Checkout from remote with tracking (force to overwrite conflicts)
                 print(f"Checking out from remote with tracking...")
                 self.git_command(
-                    ["checkout", "-b", branch_name, f"origin/{branch_name}"]
+                    ["checkout", "-f", "-b", branch_name, f"origin/{branch_name}"]
                 )
 
             else:

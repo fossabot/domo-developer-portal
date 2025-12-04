@@ -39,9 +39,7 @@ jobs:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           owner: domoinc
-          repositories: |
-            internal-domo-apis
-            domo-developer-portal
+          repositories: internal-domo-apis
 
       - name: Checkout Destination Repo
         uses: actions/checkout@v4
@@ -130,7 +128,7 @@ jobs:
       - name: Create Individual PRs with File Sync
         if: steps.check.outputs.has_changes == 'true'
         env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           python .github/scripts/create_individual_prs.py \
             --changed-list changed_files.txt \

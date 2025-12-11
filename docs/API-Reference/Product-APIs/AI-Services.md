@@ -2,7 +2,8 @@
 stoplight-id: ffvznqc76b2b5
 ---
 
-# AI Services API ![AI Pro](../../../assets/images/pro.png)
+# AI Service Layer API <!-- focus: false --> ![AI Pro](../../../assets/images/pro.png)
+
 > For pricing information, please refer to Domo’s online consumption terms (https://www.domo.com/consumption-terms) and the credit rate card in your Domo instance (Admin > Company Settings > Credit Utilization > Rate Card) for more information.
 
 ## Text Generation

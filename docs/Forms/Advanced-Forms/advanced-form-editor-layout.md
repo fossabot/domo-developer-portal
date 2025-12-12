@@ -1,69 +1,103 @@
-## Advanced Form Editor Layout
+# Advanced Form Editor Layout
 
-### Navigation
+The Advanced Form Editor provides a comprehensive workspace for building and customizing your forms. This guide covers the main navigation areas and tools available.
 
-- **Designer**
-- **Preview**
-- **Themes**
-- **Logic**
-- **JSON Editor**
+---
 
-### Navigation Controls
+## Main Navigation Tabs
 
-#### Universal
+The editor includes five primary tabs, each focused on a different aspect of form development:
 
-- **Get Link**, to share the submission link with a user.
-- **Dataset Button**, to view the response dataset for a form.
-- **Save Button**
-- **Exit Button**
+| Tab | Purpose |
+|-----|---------|
+| **Designer** | Build and arrange form components |
+| **Preview** | Test how your form looks and behaves |
+| **Themes** | Customize the visual appearance |
+| **Logic** | Define conditional behaviors and actions |
+| **JSON Editor** | View and edit the form schema directly |
 
+---
 
-#### Designer
+## Universal Controls
 
-Users can edit their form's components.
+These controls are available across all tabs:
 
-- **Undo/Redo**
-- **Property Editor**
+| Control | Description |
+|---------|-------------|
+| **Get Link** | Copy a shareable submission link to send to form respondents |
+| **Dataset Button** | View the response dataset associated with this form |
+| **Save** | Save your current changes |
+| **Exit** | Leave the editor and return to the revision page |
 
-#### Preview
+---
 
-Users can preview their form.
+## Tab-Specific Controls
 
-- **Device Type Button**
-- **Portrait Orientation Button**
-- **Invisible Elements Button**
+### Designer Tab
 
-#### Themes
+Build your form by adding and configuring components.
 
-Users can customize the look and layout of their form.
+| Control | Description |
+|---------|-------------|
+| **Undo/Redo** | Revert or reapply recent changes |
+| **Property Editor** | Configure settings for the selected component |
 
-- **Undo/Redo Buttons**
-- **Default Button**
-- **Import/Export Buttons**
-- **Theme Editor**
+### Preview Tab
 
-#### Logic
+Test your form across different devices and orientations.
 
-Users can choose from a variety of actions to perform on components within their form.
+| Control | Description |
+|---------|-------------|
+| **Device Type** | Switch between desktop, tablet, and mobile views |
+| **Portrait Orientation** | Toggle between portrait and landscape modes |
+| **Invisible Elements** | Show or hide elements that are conditionally hidden |
 
-- **All Questions**
-- **All Action Types**
-- **Manual Entry**
+### Themes Tab
 
-#### JSON Editor
+Customize the look and feel of your form.
 
-Users can see and edit the schema of their form here.
+| Control | Description |
+|---------|-------------|
+| **Undo/Redo** | Revert or reapply theme changes |
+| **Default** | Reset to the default theme settings |
+| **Import/Export** | Share themes between forms or back up your styling |
+| **Theme Editor** | Adjust colors, fonts, spacing, and other visual properties |
 
-- **Import/Export Button**
-- **Copy Button**
+### Logic Tab
 
-### Toolbox
+Create conditional rules that control form behavior.
 
-Using the left panel a user can choose from a list of components to add to their form. Alternatively you can also, **Add Question**, click **Single-Line Input** (default question type) to choose from components.
+| Control | Description |
+|---------|-------------|
+| **All Questions** | Filter to see logic applied to all questions |
+| **All Action Types** | Filter by specific action types |
+| **Manual Entry** | Manually define logic rules using expressions |
 
-### Property Editor
+### JSON Editor Tab
 
-Using the property editor a user can customize each of their components.
+Work directly with the underlying form schema.
 
+| Control | Description |
+|---------|-------------|
+| **Import/Export** | Load or save the form schema as JSON |
+| **Copy** | Copy the entire schema to your clipboard |
 
+---
 
+## Toolbox
+
+The **Toolbox** panel on the left side of the Designer tab contains all available form components. To add a component to your form:
+
+1. **Drag and drop** a component from the Toolbox onto the form canvas, or
+2. Click **Add Question** in the form canvas, then select a component type from the dropdown (defaults to **Single-Line Input**).
+
+---
+
+## Property Editor
+
+The **Property Editor** panel appears on the right side when you select a component. Use it to configure:
+
+- **General settings** — Label, placeholder text, default values
+- **Validation rules** — Required fields, input formats, character limits
+- **Visibility conditions** — When the component should appear
+- **Data binding** — Connect to Domo data sources

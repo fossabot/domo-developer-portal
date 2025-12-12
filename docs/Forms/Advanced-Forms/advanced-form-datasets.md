@@ -1,12 +1,26 @@
-## Advanced Form Datasets
+# Advanced Form Datasets
 
-Each form created will also create two datasets for user submissions.
+When you create an Advanced Form, Domo automatically generates two datasets to capture and organize user submissions.
 
-- **Audit**, this dataset will contain all responses from users, including their draft and submitted submissions.
-- **Responses**, this dataset will only contain the latest submission from a user.
+---
 
-### Submissions
+## Dataset Types
 
-- **Save** will save the submission as a draft, allowing a user to revise until they’re ready to submit. 
-- **Submit** will submit the submission and lock the submission making it uneditable. 
-- **Rollback** will be available for a Domo Form Admins allowing them to rollback a submission to the draft phase and allowing a user to refill the submission.
+| Dataset | Description |
+|---------|-------------|
+| **Audit** | Contains the complete history of all responses, including drafts and submitted entries. Use this dataset when you need to track changes over time or review submission history. |
+| **Responses** | Contains only the most recent submission from each user. Use this dataset for reporting and analysis when you need the latest data. |
+
+---
+
+## Submission States
+
+Form submissions progress through different states as users interact with them:
+
+| Action | Description |
+|--------|-------------|
+| **Save** | Saves the current response as a draft. Users can return and continue editing until they're ready to submit. |
+| **Submit** | Finalizes the submission and locks it from further editing. The response is recorded in both datasets. |
+| **Rollback** | Available to Form Admins only. Returns a submitted response to draft status, allowing the user to make changes and resubmit. |
+
+> **Tip:** Use the Audit dataset to track when users save drafts versus submit final responses, which can help identify forms that may need simplification.

@@ -1,34 +1,40 @@
-## Creating an Advanced Form
+# Creating an Advanced Form
+
+Follow these steps to create a new Advanced Form:
 
 1. Click **+ Create New Form** (ensure you have the required grants).
-2. Fill in the required fields:
-   - **Advanced Form Name**
-   - **Advanced Form Description**
-4. Click **Save** to open the revision page.
+2. Complete the required fields:
+   - **Advanced Form Name** — A descriptive title for your form.
+   - **Advanced Form Description** — A brief explanation of the form's purpose.
+3. Click **Save** to create the form and open its revision page.
 
 ---
 
-## Creating an Advanced Form Revision
+## Managing Form Revisions
 
-To update a form a user can either create a new form using the default template, duplicate an existing form, or rollback a previously published form.
+Revisions allow you to iterate on your form while preserving previous versions. You can create a new revision from scratch, duplicate an existing one, or roll back to a previously published version.
 
-### Default Revision
+### Create a New Revision
 
 1. Click **Create New Revision**.
-2. Enter the new version number (Semantic Versioning).
-3. (Optional) Add a version description.
-6. Click **Save**.
+2. Enter a version number using [Semantic Versioning](https://semver.org/) (e.g., 1.0.0).
+3. (Optional) Add a version description to document your changes.
+4. Click **Save**.
 
-### Duplicate Revision
+### Duplicate an Existing Revision
 
-1. Click the three dot menu on a revision.
+Use this option to create a copy of an existing revision as a starting point:
+
+1. Click the **three-dot menu** (⋮) on the revision you want to copy.
 2. Select **Duplicate**.
-3. Confirm **Duplicate**.
+3. Confirm by clicking **Duplicate** in the dialog.
 
-### Rollback Revision
+### Roll Back to a Previous Revision
 
-1. Click the three dot menu on a revision.
+If you need to revert to an earlier version:
+
+1. Click the **three-dot menu** (⋮) on the revision you want to restore.
 2. Select **Rollback Revision**.
-3. Confirm **Rollback**.
+3. Confirm by clicking **Rollback** in the dialog.
 
-The new revision becomes the default, but you can access earlier revisions as needed.
+> **Note:** The rolled-back revision becomes the current default, but all earlier revisions remain accessible in the revision history.

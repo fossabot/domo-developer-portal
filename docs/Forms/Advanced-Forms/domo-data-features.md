@@ -1,62 +1,116 @@
-## Domo Data Features
+# Domo Data Features
 
-Using the Toolbox a user can select the following Domo data components to use in their survey.
+Advanced Forms can integrate directly with your Domo data to create dynamic, data-driven experiences. Use the Toolbox in the Designer tab to add these data-connected components to your form.
 
-### Single Select and Multi Select Domo Dropdowns
+---
 
-- Choose **Domo Dropdown** for single select or **Multi-Select Domo Dropdown** for multi-select.
-- Navigating to the **Property Editor**, find **Choices from a Domo Datasource**.
-- Select a Domo datasource.
-- Choose value to store from a property in the dataset.
-- Choose value to display from a property in the dataset.
+## Domo Dropdowns
 
-### File Upload
+Connect dropdown fields to a Domo dataset to populate choices dynamically.
 
-File upload question utilizes Domo's file storage.
+### Single-Select Domo Dropdown
 
-### Dynamic Matrix Bulk Entry and Single Line Entry
+Allows respondents to select one option from a data-driven list.
 
-- **Bulk Entry**: Group of answers are saved by placing them in a single column.
-- **Single Line**: Each row and column pair are saved in their own columns.
+### Multi-Select Domo Dropdown
 
-### Domo Variables
+Allows respondents to select multiple options from a data-driven list.
 
-Users will have preset variables available to them.
+### Configuration Steps
 
-- Domo User ID.
-- Domo User Email
+1. Add a **Domo Dropdown** or **Multi-Select Domo Dropdown** component to your form.
+2. Open the **Property Editor** and locate **Choices from a Domo Datasource**.
+3. Select the Domo dataset you want to use.
+4. Choose the column to **store** (the value saved to your response dataset).
+5. Choose the column to **display** (the label shown to respondents).
 
-Users can then use the following to create variables:
+---
 
-- Selecting **Create Domo variable expressions**.
-- Choose a **Domo Datasource**.
-- Choose a **Compare Column** to select a column from the dataset.
-- Choose a **Form value** to select a variable from the form.
-- (Optional) **Add Condition**, to filter data further.
-- **Select value to store** from the datasource whose row will be used as the Domo Variable.
-- **Select alias** for the Domo Variable.
-- Click **Add** or hit Enter to add Domo Variable.
-- Click **Apply**.
+## File Upload
 
-Enable Export for Domo Variable.
+The File Upload component enables respondents to attach files to their submissions. Uploaded files are stored securely in Domo's file storage system.
 
-- Check the checkbox of a variable to have it exported to the form’s dataset with each user’s submission.
+---
 
-Set Question's value using Domo Datasource.
+## Dynamic Matrix
 
-- Selecting **Set Value using Domo Datasources**.
-- Choose **Compare Column** to select a column from the dataset.
-- Choose **Form value** to select a Domo Variable from the form.
-- (Optional) **Add Condition**, to filter data further.
-- Choose column or Domo Variable to use as Prefill.
-- Click **Apply**.
+Dynamic Matrix components allow you to collect tabular data with flexible storage options.
 
-### Domo Groups
+| Type | Description |
+|------|-------------|
+| **Bulk Entry** | All answers in a column are saved together as a single value. Best for simple lists or grouped responses. |
+| **Single Line Entry** | Each cell (row and column intersection) is saved as its own column in the dataset. Best when you need to analyze individual responses. |
 
-Using Domo Groups a user can set the visibility and readability of a panel, page or question. Further more a user can also set a value of a question.
+---
 
-Using the following:
+## Domo Variables
 
-- **Make the question visible to these groups**, groups that can see a question if the visibility is unchecked.
-- **Disable the read only mode for groups**, groups that can edit a question if the readability is checked.
-- **Set value for these groups** with **Set value expression**, setting the value for groups using expressions.
+Domo Variables let you pull data from datasets and use it within your form—for prefilling fields, conditional logic, or calculations.
+
+### Preset Variables
+
+These variables are automatically available in every form:
+
+| Variable | Description |
+|----------|-------------|
+| **Domo User ID** | The unique identifier of the current respondent |
+| **Domo User Email** | The email address of the current respondent |
+
+### Creating Custom Domo Variables
+
+1. In the Property Editor, select **Create Domo variable expressions**.
+2. Choose a **Domo Datasource** to pull data from.
+3. Configure the lookup:
+   - **Compare Column** — Select the dataset column to match against.
+   - **Form Value** — Select a form variable to use as the lookup key.
+   - (Optional) **Add Condition** — Apply additional filters to narrow the results.
+4. Select the **value to store** from the matching row.
+5. Enter an **alias** to name this variable for easy reference.
+6. Click **Add** (or press Enter) to create the variable.
+7. Click **Apply** to save your changes.
+
+### Exporting Variables to the Dataset
+
+To include a Domo Variable in your form's response dataset:
+
+1. Locate the variable in the Property Editor.
+2. Check the **Export** checkbox next to the variable.
+
+The variable value will now be saved with each submission.
+
+### Prefilling Questions with Domo Data
+
+You can automatically populate a question's value based on data from a Domo dataset:
+
+1. Select the question you want to prefill.
+2. In the Property Editor, select **Set Value using Domo Datasources**.
+3. Configure the lookup:
+   - **Compare Column** — Select the dataset column to match against.
+   - **Form Value** — Select a Domo Variable to use as the lookup key.
+   - (Optional) **Add Condition** — Apply additional filters.
+4. Choose the column or Domo Variable to use as the prefill value.
+5. Click **Apply** to save your changes.
+
+---
+
+## Domo Groups
+
+Domo Groups enable you to control access and behavior based on group membership. You can configure visibility, editability, and default values for specific groups.
+
+### Visibility
+
+Control which groups can see a component:
+
+- Use **Make the question visible to these groups** to specify which groups can view the component when visibility is restricted.
+
+### Editability
+
+Control which groups can edit a component:
+
+- Use **Disable read-only mode for groups** to allow specific groups to edit a component that is otherwise read-only.
+
+### Group-Based Default Values
+
+Set different default values based on group membership:
+
+- Use **Set value for these groups** combined with **Set value expression** to define values that apply to specific groups.

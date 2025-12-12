@@ -1,37 +1,41 @@
 # Domo Advanced Forms
 
-**Domo Advanced Forms** is an environment that allows users to create and distribute forms.
+**Domo Advanced Forms** provides a powerful environment for creating, distributing, and managing sophisticated forms within your Domo instance.
 
 ## Required Grants
 
-To use Advanced Forms, users need specific grants:
+To work with Advanced Forms, users need specific permissions:
 
-- **Manage Forms**: View, publish, and manage all forms, their revisions, and submissions. (for admins/managers).
-- **Create Forms**: Create new Advanced Forms.
+| Grant | Description |
+|-------|-------------|
+| **Manage Forms** | View, publish, and manage all forms, their revisions, and submissions. Recommended for admins and managers. |
+| **Create Forms** | Create new Advanced Forms. |
 
-> **Note:** Contact your Domo account team to enable these grants. Users must also have permission to specific advanced forms to interact with them.
+> **Note:** Contact your Domo account team to enable these grants. Additionally, users must have permission to access specific Advanced Forms to interact with them.
 
 ---
 
 ## Accessing Advanced Forms
 
-1. In the navigation header, select **More > Advanced Forms** to open the landing page.
-2. In the left navigation, select **Advanced Forms**.
-
-The Advanced Forms home page displays a list of all available forms based on your permissions.
+1. In the navigation header, select **More > Advanced Forms**.
+2. The Advanced Forms landing page displays all forms available to you based on your permissions.
 
 ---
 
 ## Home Page
 
-The home page features a list of all Forms you can access. Each row represents a form with columns for:
+The home page displays a list of all forms you can access. Each row represents a form with the following details:
 
-- **Advanced Form Title**
-- **Last Modified**
-- **Last Published** (JavaScript or Python)
-- **Owned By**
+| Column | Description |
+|--------|-------------|
+| **Advanced Form Title** | The name of the form |
+| **Last Modified** | When the form was last edited |
+| **Last Published** | When the form was last made available to users |
+| **Owned By** | The user who created or owns the form |
 
-Click a row to open the form's revision page.
+Click any row to open that form's revision page.
+
+---
 
 ## Additional Resources
 

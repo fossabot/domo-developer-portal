@@ -8,6 +8,8 @@ Advanced Forms can integrate directly with your Domo data to create dynamic, dat
 
 Connect dropdown fields to a Domo dataset to populate choices dynamically.
 
+![advanced-form-dropdown.png](../../../assets/images/advanced-form-dropdown.png)
+
 ### Single-Select Domo Dropdown
 
 Allows respondents to select one option from a data-driven list.
@@ -36,9 +38,9 @@ The File Upload component enables respondents to attach files to their submissio
 
 Dynamic Matrix components allow you to collect tabular data with flexible storage options.
 
-| Type | Description |
-|------|-------------|
-| **Bulk Entry** | All answers in a column are saved together as a single value. Best for simple lists or grouped responses. |
+| Type                  | Description                                                                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Bulk Entry**        | All answers in a column are saved together as a single value. Best for simple lists or grouped responses.                              |
 | **Single Line Entry** | Each cell (row and column intersection) is saved as its own column in the dataset. Best when you need to analyze individual responses. |
 
 ---
@@ -51,12 +53,14 @@ Domo Variables let you pull data from datasets and use it within your form—for
 
 These variables are automatically available in every form:
 
-| Variable | Description |
-|----------|-------------|
-| **Domo User ID** | The unique identifier of the current respondent |
-| **Domo User Email** | The email address of the current respondent |
+| Variable            | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| **Domo User ID**    | The unique identifier of the current respondent |
+| **Domo User Email** | The email address of the current respondent     |
 
 ### Creating Custom Domo Variables
+
+![advanced-form-build-variables.png](../../../assets/images/advanced-form-build-variables.png)
 
 1. In the Property Editor, select **Create Domo variable expressions**.
 2. Choose a **Domo Datasource** to pull data from.
@@ -79,6 +83,8 @@ To include a Domo Variable in your form's response dataset:
 The variable value will now be saved with each submission.
 
 ### Prefilling Questions with Domo Data
+
+![advanced-form-set-value.png](../../../assets/images/advanced-form-set-value.png)
 
 You can automatically populate a question's value based on data from a Domo dataset:
 

@@ -658,7 +658,6 @@
         }
       ]
     },
-
     {
       "type": "divider",
       "title": "Automate Actions"
@@ -764,6 +763,46 @@
           "type": "item",
           "title": "Limitations and Troubleshooting",
           "uri": "docs/Automate-Actions/Code-Engine/limitations-and-troubleshooting.md"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "title": "Forms"
+    },
+    {
+      "type": "group",
+      "title": "Advanced Forms (Beta)",
+      "items": [
+        {
+          "type": "item",
+          "title": "Overview",
+          "uri": "/docs/Forms/Advanced-Forms/overview.md"
+        },
+        {
+          "type": "item",
+          "title": "Creating an Advanced Form",
+          "uri": "/docs/Forms/Advanced-Forms/creating-advanced-forms.md"
+        },
+        {
+          "type": "item",
+          "title": "Advanced Form Editor Layout",
+          "uri": "/docs/Forms/Advanced-Forms/advanced-form-editor-layout.md"
+        },
+        {
+          "type": "item",
+          "title": "Domo Data Features",
+          "uri": "/docs/Forms/Advanced-Forms/domo-data-features.md"
+        },
+        {
+          "type": "item",
+          "title": "Advanced Forms With Datasets",
+          "uri": "/docs/Forms/Advanced-Forms/advanced-form-datasets.md"
+        },
+        {
+          "type": "item",
+          "title": "Troubleshooting",
+          "uri": "/docs/Forms/Advanced-Forms/troubleshooting.md"
         }
       ]
     },

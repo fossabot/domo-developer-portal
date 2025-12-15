@@ -489,6 +489,11 @@
           "items": [
             {
               "type": "item",
+              "title": "App Wrapper v2",
+              "uri": "/docs/Apps/App-Wrapper-v2.md"
+            },
+            {
+              "type": "item",
               "title": "Local Development with Domo CLI",
               "uri": "/docs/Apps/App-Framework/Guides/Local-Development-with-Domo-CLI.md"
             },

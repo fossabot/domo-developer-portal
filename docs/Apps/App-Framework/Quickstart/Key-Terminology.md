@@ -100,4 +100,8 @@ A wrapper around a MongoDB database that adds document-level security filters an
 
 #### [Domo App CLI](../Tools/domo-CLI.md)
 
-The main tool you’ll use to create, edit, and publish app designs to your Domo instance. The Domo App CLI is sometimes referred to as `ryuu`.
+The main tool you'll use to create, edit, and publish app designs to your Domo instance. The Domo App CLI is sometimes referred to as `ryuu`.
+
+#### [App Wrapper v2](../../App-Wrapper-v2.md)
+
+The communication layer that connects your custom app with the Domo platform. App Wrapper v2 uses MessageChannel for reliable, bidirectional communication between your app and Domo, enabling real-time event handling (dataset updates, filter changes), acknowledgment protocols for message delivery, and support for browser peripherals (camera, microphone, geolocation, bluetooth, NFC) through manifest configuration.

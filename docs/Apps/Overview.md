@@ -6,9 +6,9 @@ stoplight-id: 28v6sqz9eslb9
 
 Create an app on the Domo Platform for maximum flexibility in design, data collection, and distribution.
 
-- **Pre-built apps**: [Domo’s Appstore](https://www.domo.com/intelligent-apps/about-appstore) provides a collection of apps built by Domo and our community that you can leverage for fast insights.
+- **Pre-built apps**: [Domo's Appstore](https://www.domo.com/intelligent-apps/about-appstore) provides a collection of apps built by Domo and our community that you can leverage for fast insights.
 - **[Domo Bricks](../Apps/DDX-Bricks/Quickstart/overview.md) (previously DDX Bricks)**: Domo Bricks are pre-built objects that allow you to create advanced visualizations and apps that can be customized in a simple browser-based code editor.
-- **[App Framework](../Apps/App-Framework/Welcome.md)**: The Domo App Framework provides a set of APIs for building custom JavaScript-based front-ends on Domo and a transactional database called AppDB, which is a wrapper on top of MongoDB.
+- **[App Framework](../Apps/App-Framework/Welcome.md)**: The Domo App Framework provides a set of APIs for building custom JavaScript-based front-ends on Domo and a transactional database called AppDB, which is a wrapper on top of MongoDB. Apps communicate with the Domo platform through the [App Wrapper v2](../Apps/App-Wrapper-v2.md), which provides reliable MessageChannel-based communication, real-time event handling, and support for browser peripherals like camera and geolocation.
 
 ## Domo Bricks or the App Framework?
 

@@ -109,10 +109,13 @@ Here we will set up your app to be PWA ready, just follow the following steps.
 
 3. Edit your `manifest.json` and add the PWA metadata.
 
+   **Important:** Since this app uses the device camera for barcode scanning, you must enable camera access by adding `"allowCamera": true` to your manifest. This is required by [App Wrapper v2](../../App-Wrapper-v2.md#peripheral-device-support) to grant your app permission to access the camera API.
+
    ```ts
    {
      "name": "Barcode Scanner",
      "version": "0.0.1",
+     "allowCamera": true,
      "size": {
          "width": 3,
          "height": 3

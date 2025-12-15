@@ -6,6 +6,8 @@ stoplight-id: 2a14dd34496e7
 
 This is an example of a simple app that leverages the `domo.onDataUpdate` function to manage how the app responds to updates made to the underlying dataset. Without this function, the app would be reloaded each time that underlying data was updated, which could lead to a bad user experience if the app refreshed in the middle of a user interaction. This is particularly painful with SPA apps where the user may have navigated to a sub route in the app and then get kicked back to the main route because the data refreshed.
 
+**App Wrapper v2 Enhancement:** The [App Wrapper v2](../../App-Wrapper-v2.md) improves data update handling with its ask-reply acknowledgment protocol. When your app receives a `dataUpdated` event, it should send an acknowledgment back to Domo. If no acknowledgment is received within 500ms, the wrapper automatically retries or triggers a fallback refresh. The `domo.onDataUpdate` function handles these acknowledgments automatically when using the domo.js library.
+
 ### Getting Started
 ---
 #### **Sample Data**

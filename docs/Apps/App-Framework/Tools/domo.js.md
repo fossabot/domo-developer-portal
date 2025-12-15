@@ -97,11 +97,13 @@ import Domo, { Filter, Variable, RequestOptions } from 'ryuu.js';
 
 ### Communication Architecture
 
-Your custom app runs in an iframe within the Domo platform. ryuu.js establishes a bidirectional communication channel using:
+Your custom app runs in an iframe within the Domo platform. ryuu.js establishes a bidirectional communication channel using the [App Wrapper v2](../../App-Wrapper-v2.md) architecture:
 
-- **MessageChannel API** - Primary communication mechanism for desktop/web
+- **MessageChannel API** - Primary communication mechanism for desktop/web (v2 improvement)
 - **webkit.messageHandlers** - iOS native integration
 - **Global objects** - Android/Flutter integration
+
+App Wrapper v2 provides significant improvements over the legacy v1 implementation, including reliable ask-reply acknowledgments, automatic retry with error recovery, and support for browser peripherals (camera, microphone, geolocation, etc.). For detailed information on the underlying communication protocol, see the [App Wrapper v2 documentation](../../App-Wrapper-v2.md).
 
 ### Request-Reply Pattern
 

@@ -6,19 +6,24 @@ stoplight-id: af407395c766b
 
 The manifest file is the configuration file used to provide meta-data about an App Design and the resources that it needs access to in Domo. The manifest file should be placed in the base directory of the App Design and should be named <strong>manifest.json</strong>.
 
-| Property          | Type            | Description                                                | Notes                                                                                                                                                                                                                                                          | Required | Guide                                                                                                             |
-| ----------------- | --------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
-| `name`            | String          | The name of App Design                                     | An App Design can have many App Instances (Cards in Domo) - each App Instance has its own name.                                                                                                                                                                | Required |
-| `version`         | String          | The version of your App Design.                            |                                                                                                                                                                                                                                                                | Required |
-| `size`            | Object          | The size of your App.                                      | Object with `width` and `height` properties defined on a scale of 1-6                                                                                                                                                                                          | Required |
-| `fullpage`        | Boolean         | Allows the app to be viewed in full page mode.             |                                                                                                                                                                                                                                                                | Optional |
-| `datasetsMapping` | List of Objects | A list of Datasets that the App Design uses.               | Each object corresponds to one Dataset and should include an `alias`, `dataSetId`, and `fields` property. If the App Design doesn't use Datasets, `datasetsMapping` can be an empty list `[]`                                                                  | Required |
-| `collections`     | List of Objects | A list of AppDB collections that the App Design uses       | Each object corresponds to one AppDB collection and should include a `name`, `schema` (optional), and `syncEnabled` property. If your App Design leverages AppDB collections, you'll also need to setup a `proxyId` property in the manifest file.             | Optional | [AppDB API](../../../API-Reference/Domo-App-APIs/AppDB-API.md)                                                    |
-| `workflowMapping` | List of Objects | A list of Workflows that the App Design uses.              | Each object corresponds to one Workflow and should include an `alias` and `parameters` property. If your App Design leverages Workflows, you'll also need to setup a `proxyId` property in the manifest file.                                                  | Optional | [Hitting a Workflow from an App](hitting-a-workflow.md)                                                           |
-| `packageMapping`  | List of Objects | A list of Code Engine packages that the App Design uses.   | Each object corresponds to one Code Engine package and should include an `alias`, `parameters` (if applicable), and `output` property. If your App Design leverages Code Engine packages, you'll also need to setup a `proxyId` property in the manifest file. | Optional | [Hitting Code Engine from an App](hitting-code-engine-from-an-app.md)                                             |
-| `ignore`          | List            | Instructs the CLI to ignore certain files when publishing. | Accepts an array of glob patterns.                                                                                                                                                                                                                             | Optional |
-| `id`              | String          | This is a unique identifier for your App Design.           | It is added to the manifest automatically by the command line tool the first time you publish your design via `domo publish`.                                                                                                                                  | Required |
-| `proxyId`         | String          | This is an id of a card you want to impersonate.           | It is required if you want to be able to develop locally against Domo Workflows, Code Engine, or AppDB.                                                                                                                                                        | Optional | [Getting a proxyId](https://developer.domo.com/portal/af407395c766b-the-manifest-file#getting-a-proxyid-advanced) |
+| Property            | Type            | Description                                                | Notes                                                                                                                                                                                                                                                          | Required | Guide                                                                                                             |
+| ------------------- | --------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| `name`              | String          | The name of App Design                                     | An App Design can have many App Instances (Cards in Domo) - each App Instance has its own name.                                                                                                                                                                | Required |
+| `version`           | String          | The version of your App Design.                            |                                                                                                                                                                                                                                                                | Required |
+| `size`              | Object          | The size of your App.                                      | Object with `width` and `height` properties defined on a scale of 1-6                                                                                                                                                                                          | Required |
+| `fullpage`          | Boolean         | Allows the app to be viewed in full page mode.             |                                                                                                                                                                                                                                                                | Optional |
+| `allowGeolocation`  | Boolean         | Enables geolocation API access in your app.                | Default: `false`. Allows your app to access `navigator.geolocation` API for location-based features.                                                                                                                                                          | Optional | [App Wrapper v2](../../App-Wrapper-v2.md#peripheral-device-support)                                               |
+| `allowCamera`       | Boolean         | Enables camera API access in your app.                     | Default: `false`. Allows your app to access camera via `navigator.mediaDevices.getUserMedia()` for photo/video capture or QR scanning.                                                                                                                        | Optional | [App Wrapper v2](../../App-Wrapper-v2.md#peripheral-device-support)                                               |
+| `allowMic`          | Boolean         | Enables microphone API access in your app.                 | Default: `false`. Allows your app to access microphone via `navigator.mediaDevices.getUserMedia()` for audio recording or voice input.                                                                                                                        | Optional | [App Wrapper v2](../../App-Wrapper-v2.md#peripheral-device-support)                                               |
+| `allowBluetooth`    | Boolean         | Enables Bluetooth API access in your app.                  | Default: `false`. Allows your app to access `navigator.bluetooth` API for IoT device integration or beacon connectivity.                                                                                                                                      | Optional | [App Wrapper v2](../../App-Wrapper-v2.md#peripheral-device-support)                                               |
+| `allowNFC`          | Boolean         | Enables NFC API access in your app.                        | Default: `false`. Allows your app to access Web NFC API for contactless cards or NFC tag reading.                                                                                                                                                             | Optional | [App Wrapper v2](../../App-Wrapper-v2.md#peripheral-device-support)                                               |
+| `datasetsMapping`   | List of Objects | A list of Datasets that the App Design uses.               | Each object corresponds to one Dataset and should include an `alias`, `dataSetId`, and `fields` property. If the App Design doesn't use Datasets, `datasetsMapping` can be an empty list `[]`                                                                  | Required |
+| `collections`       | List of Objects | A list of AppDB collections that the App Design uses       | Each object corresponds to one AppDB collection and should include a `name`, `schema` (optional), and `syncEnabled` property. If your App Design leverages AppDB collections, you'll also need to setup a `proxyId` property in the manifest file.             | Optional | [AppDB API](../../../API-Reference/Domo-App-APIs/AppDB-API.md)                                                    |
+| `workflowMapping`   | List of Objects | A list of Workflows that the App Design uses.              | Each object corresponds to one Workflow and should include an `alias` and `parameters` property. If your App Design leverages Workflows, you'll also need to setup a `proxyId` property in the manifest file.                                                  | Optional | [Hitting a Workflow from an App](hitting-a-workflow.md)                                                           |
+| `packageMapping`    | List of Objects | A list of Code Engine packages that the App Design uses.   | Each object corresponds to one Code Engine package and should include an `alias`, `parameters` (if applicable), and `output` property. If your App Design leverages Code Engine packages, you'll also need to setup a `proxyId` property in the manifest file. | Optional | [Hitting Code Engine from an App](hitting-code-engine-from-an-app.md)                                             |
+| `ignore`            | List            | Instructs the CLI to ignore certain files when publishing. | Accepts an array of glob patterns.                                                                                                                                                                                                                             | Optional |
+| `id`                | String          | This is a unique identifier for your App Design.           | It is added to the manifest automatically by the command line tool the first time you publish your design via `domo publish`.                                                                                                                                  | Required |
+| `proxyId`           | String          | This is an id of a card you want to impersonate.           | It is required if you want to be able to develop locally against Domo Workflows, Code Engine, or AppDB.                                                                                                                                                        | Optional | [Getting a proxyId](https://developer.domo.com/portal/af407395c766b-the-manifest-file#getting-a-proxyid-advanced) |
 
 ### Example Manifest
 
@@ -297,6 +302,40 @@ The `fullpage` property consists of a boolean value.
   "fullpage": true
 }
 ```
+
+### Peripheral Device Permissions
+
+---
+
+App Wrapper v2 allows your custom apps to request access to browser peripheral APIs through boolean properties in the manifest. These permissions enable advanced features like camera access for QR code scanning, geolocation for location-based analytics, microphone for voice input, and more.
+
+**Available Peripheral Properties:**
+
+- `allowGeolocation` - Enable access to `navigator.geolocation` API for location-based features
+- `allowCamera` - Enable camera access via `navigator.mediaDevices.getUserMedia()` for photo/video capture or QR scanning
+- `allowMic` - Enable microphone access via `navigator.mediaDevices.getUserMedia()` for audio recording or voice input
+- `allowBluetooth` - Enable access to `navigator.bluetooth` API for IoT device integration or beacon connectivity
+- `allowNFC` - Enable access to Web NFC API for contactless cards or NFC tag reading
+
+All peripheral properties default to `false` and must be explicitly enabled in the manifest.
+
+**Example with Peripheral Permissions:**
+
+```json
+{
+  "name": "My App with Camera Access",
+  "version": "1.0.0",
+  "fullpage": true,
+  "allowCamera": true,
+  "allowGeolocation": true,
+  "size": {
+    "width": 4,
+    "height": 3
+  }
+}
+```
+
+For detailed information on using peripherals in your app, see the [App Wrapper v2 Peripheral Device Support](../../App-Wrapper-v2.md#peripheral-device-support) documentation.
 
 ### id
 

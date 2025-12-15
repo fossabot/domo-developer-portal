@@ -21,6 +21,7 @@ Ready to get started? Let's jump in!
   - [Domo Apps CLI](Tools/domo-CLI.md)
   - [Domo.js](Tools/domo.js.md)
 - Guides – Code examples and brief explanations for common patterns.
+  - [App Wrapper v2](../App-Wrapper-v2.md) - Communication layer between your app and Domo
   - [The Manifest File](Guides/manifest.md)
   - [Public Assets](Guides/public-assets.md)
   - [Getting Data](Guides/getting-data.md)

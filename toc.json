@@ -457,9 +457,25 @@
               "uri": "/docs/Apps/App-Framework/Tools/domo-CLI.md"
             },
             {
-              "type": "item",
+              "type": "group",
               "title": "domo.js",
-              "uri": "/docs/Apps/App-Framework/Tools/domo.js.md"
+              "items": [
+                {
+                  "type": "item",
+                  "title": "Choose Your Version",
+                  "uri": "/docs/Apps/App-Framework/Tools/domo.js.md"
+                },
+                {
+                  "type": "item",
+                  "title": "v5+ Documentation",
+                  "uri": "/docs/Apps/App-Framework/Tools/domo.js-v5.md"
+                },
+                {
+                  "type": "item",
+                  "title": "v4 and Earlier",
+                  "uri": "/docs/Apps/App-Framework/Tools/domo.js-v4.md"
+                }
+              ]
             },
             {
               "type": "item",

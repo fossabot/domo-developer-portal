@@ -469,7 +469,7 @@ interface ErrorMessage {
 
 ### Recommended: Using ryuu.js
 
-We recommend using the official Domo client library **ryuu.js** which handles all the MessageChannel communication, acknowledgments, and data fetching for you:
+We recommend using the official Domo client library (**ryuu.js**)[https://www.npmjs.com/package/ryuu.js] which handles all the MessageChannel communication, acknowledgments, and data fetching for you:
 
 ```bash
 npm install ryuu.js

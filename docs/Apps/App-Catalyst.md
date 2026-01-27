@@ -66,6 +66,9 @@ To specify exactness
 
 **• Task Clarification**
 
+**• Simple form support:**
+The app can persist form submission via AppDB.
+
 **• Live Generation & Editing:**
 Once you submit your prompt, the generator will process your request and build the application. You will see the complete code in a real-time, fully functional code editor. You can review, modify, and refine the code as needed.
 
@@ -76,6 +79,7 @@ Once you submit your prompt, the generator will process your request and build t
 Prompt editing allows you to make ‘targeted’ edits to the app.
 
 ![AC_Picture19.png](../../assets/images/AC_Picture19.png)
+
 ![AC_Picture20.png](../../assets/images/AC_Picture20.png)
 
 **• Instant Preview:**
@@ -155,4 +159,5 @@ App Catalyst abstracts this entire multi-step process into a simple, integrated 
 **Q:** Do I need coding experience to take advantage of App Catalyst?
 
 **A:** No, App Catalyst is specifically designed for beginners and business users with no prior coding experience. However, editing, data wiring, and additional functionality will need to be done by a developer who is familiar with JavaScript.
+
 

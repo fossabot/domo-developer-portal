@@ -2,29 +2,50 @@
 
 ## Summary
 
-App Catalyst empowers you to instantly create Domo Pro-Code applications. These apps can integrate directly with your Domo datasets and can be added to Domo Dashboards and App Studio. Whether you need a comprehensive KPI dashboard, a practical data entry application, or a single, impactful visualization like a bar chart, the generator can build it based on your natural language specifications.
-
-Start with one of the example prompts or add your own to see App Catalyst in action. If you are returning to a previous project, you can find it in the History tab. If you have already loaded data into Domo you can have App Catalyst model the app from the data. If you haven't loaded data into Domo, App Catalyst will model some dummy data that can easily be replaced in the Pro-Code editor.
+App Catalyst empowers you to instantly create Domo Pro-Code applications based on your natural language specifications. These apps can integrate directly with your Domo datasets and can be added to Domo Dashboards and App Studio.
 
 ![AC_Picture1.png](../../assets/images/AC_Picture1.png)
 
+## Chat Mode
+
+Default is planning mode where App Catalyst will analyze your prompt, ask refining questions and then build your application. If you have already curated a prompt, you can choose Standard mode & App Catalyst will follow the instructions of the prompt.
+
+![AC_Picture13.png](../../assets/images/AC_Picture13.png)
+
+Start with one of the example prompts or add your own to see App Catalyst in action.
+
+![AC_Picture14.png](../../assets/images/AC_Picture14.png)
+
+If you have already loaded data into Domo you can have App Catalyst model the app from the data. If you haven’t loaded data
+into Domo, App Catalyst will model some dummy data that can easily be replaced in the Pro-Code editor.
+
+![AC_Picture15.png](../../assets/images/AC_Picture15.png)
+
 > **Best Practices:** If you start with a Domo Dataset, App Catalyst will use that data as a model when building the app and add the appropriate data App Framework APIs to your project.
 
-![AC_Picture2.png](../../assets/images/AC_Picture2.png)
+## Clarifying Questions
+App Catalyst will review your prompt and if needed ask some clarifying questions.
 
-If you are returning to App Catalyst, your previous projects can be found in the History tab.
+![AC_Picture16.png](../../assets/images/AC_Picture16.png)
+
+## Task Clarification
+Review the proposed plan, make any edits you like.
+
+![AC_Picture17.png](../../assets/images/AC_Picture17.png)
+
+## From Prompt to Preview
+The core of the App Catalyst is its ability to turn your ideas into functional applications.
+
+![AC_Picture18.png](../../assets/images/AC_Picture18.png)
+
+## Chat History
+If you are returning to a previous project, you can find it in the History tab.
 
 ![AC_Picture3.png](../../assets/images/AC_Picture3.png)
 
 > **Best Practices:** It's best to bump the version of your project if you plan to return to the project's history. App Catalyst will overwrite the first version (0.0.1).
 
 ## Key Features
-
-**App Catalyst: From Prompt to Preview**
-
-The core of the App Catalyst is its ability to turn your ideas into functional applications.
-
-![AC_Picture4.png](../../assets/images/AC_Picture4.png)
 
 **• Describe Your Vision:**
 Start by providing a text prompt describing the app you want to build. The more specific and detailed you are in your description, the more accurate the generated app will be to your requirements.
@@ -41,11 +62,21 @@ To specify exactness
 
 > "I'm a healthcare practice managing 500+ patients across 8 doctors. Build a HIPAA-compliant patient management system with appointment calendar, medical history timeline, and prescription tracking tables. Display upcoming appointments in daily/weekly views, patient visit history with searchable notes, and medication refill alerts. Include quick-action buttons for rescheduling appointments and sending SMS reminders. Filter by doctor, appointment type, or date range. Show key metrics like no-show rates and average visit duration in dashboard cards. Use clean, professional design with blue and white colors, optimized for desktop and tablet use by medical staff.".
 
+**• Clarifying Questions**
+
+**• Task Clarification**
+
 **• Live Generation & Editing:**
 Once you submit your prompt, the generator will process your request and build the application. You will see the complete code in a real-time, fully functional code editor. You can review, modify, and refine the code as needed.
 
 ![AC_Picture5.png](../../assets/images/AC_Picture5.png)
 ![AC_Picture6.png](../../assets/images/AC_Picture6.png)
+
+**• Prompt Editing:**
+Prompt editing allows you to make ‘targeted’ edits to the app.
+
+![AC_Picture19.png](../../assets/images/AC_Picture19.png)
+![AC_Picture20.png](../../assets/images/AC_Picture20.png)
 
 **• Instant Preview:**
 As you make changes to the code, you can immediately preview the UI to see how your edits affect the final product, ensuring a tight feedback loop between coding and design.
@@ -124,3 +155,4 @@ App Catalyst abstracts this entire multi-step process into a simple, integrated 
 **Q:** Do I need coding experience to take advantage of App Catalyst?
 
 **A:** No, App Catalyst is specifically designed for beginners and business users with no prior coding experience. However, editing, data wiring, and additional functionality will need to be done by a developer who is familiar with JavaScript.
+

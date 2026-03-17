@@ -2,11 +2,16 @@
 
 Below is a comprehensive list of JavaScript libraries available for use in Code Engine.
 
-| **Library**         | **Description**                                                                |
-| ------------------- | ------------------------------------------------------------------------------ |
-| `codeengine`        | Interfaces with the Code Engine system to manage workflows and data processes. |
-| `axios`             | A promise-based HTTP client for making external API requests.                  |
-| `googleAuthLibrary` | Handles Google authentication and authorization flows.                         |
+| **Library**         | **Description**                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `codeengine`        | Interfaces with the Code Engine system to manage workflows and data processes.                               |
+| `axios`             | A promise-based HTTP client for making external API requests.                                                |
+| `googleAuthLibrary` | Handles Google authentication and authorization flows.                                                       |
+| `d3-node`           | Server-side D3 graphing library                                                                              |
+| `uuid`              | For the creation of RFC9562 (formerly RFC4122) UUIDs                                                         |
+| `dotenv`            | Load environment variables from a .env file into process.env                                                 |
+| `lodash`            | A modern JavaScript utility library delivering modularity, performance & extras.                             |
+| `pdfLib`            | Create PDF documents from scratch, or modify existing PDF documents. Draw text, images, and vector graphics. |
 
 ## Functions in the `codeengine` library
 

@@ -48,9 +48,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: DomoApps/domo-publish-action@v1
+      - uses: DomoApps/domoapps-publish-action@v2
         with:
-          domo-access-token: ${{ secrets.DOMO_ACCESS_TOKEN }}
+          domo-token: ${{ secrets.DOMO_ACCESS_TOKEN }}
           build-command: npm run your-build-command
           domo-instance: your-instance.domo.com
           working-directory: ./build

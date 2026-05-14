@@ -1,4 +1,20 @@
+# ⚠️ DEPRECATED — This Repository Has Moved
+
+> **This repository is no longer accepting contributions.**
+>
+> Domo's developer documentation has moved to **[DomoApps/domo-documentation-hub](https://github.com/DomoApps/domo-documentation-hub)**.
+>
+> - 🚫 **Pull requests opened here will be automatically closed.**
+> - 🚫 **Issues opened here will be automatically closed.**
+> - ✅ **Please file all new issues, suggestions, and PRs in [domo-documentation-hub](https://github.com/DomoApps/domo-documentation-hub).**
+>
+> The live Developer Portal at https://developer.domo.com/ will continue to be available during the transition. For questions about the migration, contact the developer relations team.
+
+---
+
 # Contributing to Domo's Developer Portal
+
+> **Note:** The guidance below is preserved for historical reference only. All new contributions must go to [domo-documentation-hub](https://github.com/DomoApps/domo-documentation-hub).
 
 Welcome to Domo's Developer Portal repository!
 

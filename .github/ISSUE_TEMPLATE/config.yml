@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🚫 This repository is deprecated
+    url: https://github.com/DomoApps/domo-documentation-hub/issues/new/choose
+    about: Please file all new issues in domo-documentation-hub. Issues opened here will be automatically closed.

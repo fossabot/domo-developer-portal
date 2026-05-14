@@ -1,0 +1,71 @@
+name: Auto-close (repo deprecated)
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  close-pr:
+    if: ${{ github.event_name == 'pull_request_target' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and close PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = [
+              '## ⚠️ This repository is deprecated',
+              '',
+              'Thanks for the contribution! Unfortunately this repository is no longer accepting pull requests.',
+              '',
+              'Documentation has moved to **[DomoApps/domo-documentation-hub](https://github.com/DomoApps/domo-documentation-hub)**.',
+              '',
+              'Please re-open this PR against the new repository. Closing automatically.'
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body
+            });
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              state: 'closed'
+            });
+
+  close-issue:
+    if: ${{ github.event_name == 'issues' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and close issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = [
+              '## ⚠️ This repository is deprecated',
+              '',
+              'Thanks for raising this! Unfortunately this repository is no longer accepting issues.',
+              '',
+              'Please re-file this issue in **[DomoApps/domo-documentation-hub](https://github.com/DomoApps/domo-documentation-hub/issues/new/choose)**. Closing automatically.'
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });

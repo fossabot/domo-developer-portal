@@ -1,4 +1,6 @@
 # ⚠️ DEPRECATED — This Repository Has Moved
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FDomoApps%2Fdomo-developer-portal.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FDomoApps%2Fdomo-developer-portal?ref=badge_shield)
+
 
 > **This repository is no longer accepting contributions.**
 >
@@ -241,3 +243,7 @@ This process is iterative—work with the AI to refine your plan, add or update 
 With this workflow, you can efficiently collaborate with AI to produce high-quality, well-structured documentation and code updates.
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FDomoApps%2Fdomo-developer-portal.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FDomoApps%2Fdomo-developer-portal?ref=badge_large)
